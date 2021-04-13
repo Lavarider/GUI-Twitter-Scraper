@@ -14,6 +14,3 @@ This program will allow you to download any historical tweets from Twitter, and 
 
 # Issues
 This was created to help people very new to python scrape Twitter data in an easy and accessable way. Feel free to contact me about any issues or changes you think I should make, or with more general questions about Twitter datamining.
-
-# Future Updates
-I plan to add specific user-based scraping, as well as location-based scraping.

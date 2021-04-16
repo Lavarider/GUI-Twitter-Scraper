@@ -53,6 +53,28 @@ def submit():
     if disglobvar=="yes":
         params="'"+wordsvar+" from:"+personvar+" near:"+locationvar+" include:nativeretweets"+" since:"+sincevar+" until:"+untilvar+"'"
         params=str(params)
+
+    #if personvar==None:
+    if len(personvar)==0:
+        params = "'"+wordsvar+" near:"+locationvar+" since:"+sincevar+" until:"+untilvar+"'"
+        if disglobvar=="yes":
+            params="'"+wordsvar+" near:"+locationvar+" include:nativeretweets"+" since:"+sincevar+" until:"+untilvar+"'"
+        str(params)
+
+    #if locationvar==None:
+    if len(locationvar)==0:
+        params = "'"+wordsvar+" from:"+personvar+" since:"+sincevar+" until:"+untilvar+"'"
+        if disglobvar=="yes":
+            params="'"+wordsvar+" from:"+personvar+" include:nativeretweets"+" since:"+sincevar+" until:"+untilvar+"'"
+        str(params)
+
+    #if locationvar==None and personvar==None:
+    if len(locationvar)==0 and len(personvar)==0:
+        params = "'"+wordsvar+" since:"+sincevar+" until:"+untilvar+"'"
+        if disglobvar=="yes":
+            params="'"+wordsvar+" include:nativeretweets"+" since:"+sincevar+" until:"+untilvar+"'"
+        str(params)
+
     #print(params)
     for i,tweet in enumerate(sntwitter.TwitterSearchScraper(params).get_items()):
         if i>countvar:
@@ -64,6 +86,7 @@ def submit():
     tweetslistdataframe.to_csv(csvnamevar+".csv")
     tweetslist.clear()
     del tweetslistdataframe
+    print("Finished Downloading Tweets")
     #root.destroy()
 
 count_label=tk.Label(root, text = 'How Many Tweets Would You Like?',bg="Light Blue", font = ('calibre',10,'bold'))
